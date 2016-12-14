@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 int main(int argc, char** argv) {
   if (argc <= 1) {
      printf("please specify a file\n");
@@ -23,15 +24,32 @@ int main(int argc, char** argv) {
     printf("%02x  ", i);
   }
   printf("\n\n");
+  char aText[17];
+  aText[16] = '\0';
+  int i = 0;
   while ((c = fgetc(aFile)) != -1) {
     if (n % 16 == 0) {
       printf("%*x    ", aLen, n);
     }
     printf("%02x  ", c);
+    if (isprint(c)) {
+      aText[i++] = c;
+    } else {
+      aText[i++] = ' ';
+    }
     n++;
     if (n % 16 == 0) {
+      printf("  %s", aText);
+      i = 0;
       printf("\n");
     }
+  }
+  if (i > 0) {
+    for (int j = i; j < 16; j++) {
+      printf("%4s", "");
+    }
+    aText[i] = '\0';
+    printf("  %s", aText);
   }
   printf("\n");
   fclose(aFile);
