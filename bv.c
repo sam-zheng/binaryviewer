@@ -4,10 +4,12 @@
 int main(int argc, char** argv) {
   if (argc <= 1) {
      printf("please specify a file\n");
+	 return -1;
   }
   FILE* aFile = fopen(argv[1], "r");
   if (aFile == NULL) {
      printf("error opening file: %s", argv[0]);
+	 return -1;
   }
   fseek(aFile, 0L, SEEK_END);
   long aSize = ftell(aFile);
