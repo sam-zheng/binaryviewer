@@ -1,2 +1,2 @@
-# binaryviewer
-simple utility to view binary files in hex
+# Memo
+playground for miscellaneous stuff
