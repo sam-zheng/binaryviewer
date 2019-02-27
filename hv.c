@@ -1,3 +1,6 @@
+/*
+ * to view a file in raw HEX.
+ */
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
